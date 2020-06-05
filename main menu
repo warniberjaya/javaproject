@@ -1,1 +1,71 @@
+import javax.swing.*;
+import java.lang.invoke.SwitchPoint;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.lang.*;
+import java.util.*;
 
+
+public class MainMenu {
+
+    public MainMenu(){
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Welcome to the main menu");
+        System.out.println("Please select your option");
+        System.out.println("1. ADD NEW RECORD");
+        System.out.println("2. DELETE RECORD");
+        System.out.println("3. SEARCH RECORD");
+        System.out.println("4. EDIT RECORD");
+        System.out.println("5. VIEW RECORD");
+        System.out.println("6. SUMMARY FOR THE RECORD");
+        System.out.println("7. EXIT");
+        System.out.println();
+        System.out.print("Your Choice:");
+
+        int menu = Integer.parseInt(input.next());
+
+
+        switch (menu) {
+            case 1:
+                Record rec;
+                rec = new Record();
+                break;
+        case 2:
+            Delete();
+            break;
+
+        case 3:
+            Search();
+            break;
+
+        case 4:
+            Edit();
+            break;
+
+        case 5:
+            View();
+            break;
+
+        case 6:
+            Summary();
+            break;
+
+        case 7:
+            System.exit(0);
+            break;
+
+            default:
+                System.out.println("You enter the wrong selection of menu");
+                new MainMenu();
+
+        }
+    }
+
+    public static void main(String[] args){
+
+        MainMenu menu;
+        menu = new MainMenu();
+}
+}
