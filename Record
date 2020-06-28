@@ -285,7 +285,7 @@ public class Record {
 
 
 
-        file_butt.addActionListener(new ActionListener() {
+        /*file_butt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 file_chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -299,7 +299,7 @@ public class Record {
                     System.out.println("Image path: " + file_img.getText());
                 }
             }
-        });
+        });*/
     }
 
    public void filewriter() throws IOException {
