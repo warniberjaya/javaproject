@@ -69,8 +69,9 @@ public class Record {
         String[] genus = {"Astragalus","Bulbophyllum","Psychotria","Euphorbia","Carex","Begonia","Dendrobium","Acacia","Solanum","Senecio","Croton","Pleurothallis","Eugenia","Piper","Ardisia","Syzygium","Rhododendron","Miconia","Peperomia","Salvia","Erica","Impatiens","Cyperus","Phyllanthus","Allium","Epidendrum","Vernonia","Lepanthes","Anthurium","Diospyros","Ficus","Indigofera","Justicia","Silene","Oxalis","Crotalaria","Centaurea","Cassia","Eucalyptus","Oncidium","Galium","Cousinia","Ipomoeas","Dioscorea","Cyrtandra","Helichrysum","Ranunculus","Habenaria","Schefflera","Ixora","Berberis","Quercus","Pandanus","Panicum","Eria","Polygala","Potentilla","Oncosperma","Licuala","Areca","Pinanga"};
         box1 = new JComboBox(genus);
 
-        filechooser file = new filechooser();
-        file_butt.addActionListener(file);
+        //file_chooser file = new filechooser();
+       // file_butt.addActionListener(file);
+
 
 
         GroupLayout layout = new GroupLayout(frame.getContentPane());
@@ -152,8 +153,8 @@ public class Record {
 
         panel.setBorder(new EmptyBorder(100,100,100,100));
         //panel.setPreferredSize(new Dimension(200,300));
-        panel.setBackground(Color.green);
-        panel.setBackground(Color.red);
+        //panel.setBackground(Color.green);
+        //panel.setBackground(Color.red);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setPreferredSize(new Dimension(400,500));
@@ -182,6 +183,22 @@ public class Record {
                 new MainMenu();
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.dispose();
+            }
+        });
+
+        file_butt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                file_chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+                //System.out.println("image");
+                FileNameExtensionFilter restrict = new FileNameExtensionFilter("images only", "png", "jpg", "gif");
+                file_chooser.addChoosableFileFilter(restrict);
+
+                int fc = file_chooser.showSaveDialog(null);
+                if (fc == JFileChooser.APPROVE_OPTION) {
+                    file_img.setText(file_chooser.getSelectedFile().getAbsolutePath());
+                    System.out.println("Image path: " + file_img.getText());
+                }
             }
         });
 
@@ -283,24 +300,9 @@ public class Record {
 
         System.out.println("Genus: " + Objects.requireNonNull(box1.getSelectedItem()).toString());
 
-
-
-        /*file_butt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                file_chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
-                FileNameExtensionFilter restrict = new FileNameExtensionFilter("images only", "png", "jpg", "gif");
-                file_chooser.addChoosableFileFilter(restrict);
-
-                int fc = file_chooser.showSaveDialog(null);
-                if (fc == JFileChooser.APPROVE_OPTION) {
-                    file_img.setText(file_chooser.getSelectedFile().getAbsolutePath());
-                    System.out.println("Image path: " + file_img.getText());
-                }
-            }
-        });*/
     }
+
+
 
    public void filewriter() throws IOException {
 
